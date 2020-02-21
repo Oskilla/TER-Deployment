@@ -1,37 +1,37 @@
 class Noeud {
-    private String nomNoeud
-    private String fournisseur //service provider
-    private String OS
+    private String nomNoeud;
+    private String fournisseur; //service provider
+    private String OS;
     public Noeud(String fournisseur, String nomNoeud, String OS){
-        this.fournisseur = fournisseur
-        this.nomNoeud = nomNoeud
-        this.OS = OS
+        this.fournisseur = fournisseur;
+        this.nomNoeud = nomNoeud;
+        this.OS = OS;
     }
 
     public String getFournisseur(){
-        return fournisseur
+        return fournisseur;
     }
     public String getNomNoeud(){
-        return nomNoeud
+        return nomNoeud;
     }
     public String getOS(){
-        return OS
+        return OS;
     }
     public void deployAll(){
-        switch (this.fournisseur){
-            case this.fournisseur=="Amazon":
-                deployAllAmazon();
-            case this.fournisseur=="Google":
-                deployAllGoogle();
-            default:
-                println("si t'arrive là c'est qu'il y a eu un problème")
+        if (fournisseur == "Amazon"){
+            deployAllAmazon();
+        }else if (fournisseur == "Google"){
+            deployAllGoogle();
+        }
+        else{
+            println("il y a eu un probleme");
         }
     }
     private void deployAllAmazon(){
-        println("Amazon")
+        println("Amazon");
     }
     private void deployAllGoogle(){
-        println("Google")
+        println("Google");
     }
     public void deployJava(){
 
