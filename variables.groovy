@@ -72,7 +72,6 @@ if(javaV.contains(mostRecentVersion(versions))){
      println("j'ai la version la plus recente, on considere que c'est bon")
 }
 
-
 //text2 = text[0].Substring(text[0].IndexOf('[') + 1);
 //println(text2)
 /*
