@@ -1,0 +1,3 @@
+windows1{java:8.4;mysql}
+windows2{java,mysql}
+linux{java,pomme}
