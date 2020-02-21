@@ -1,24 +1,22 @@
 class Noeud {
-    private String nomNoeud;
-    private String fournisseur; //service provider
-    private String OS;
+    private mapNoeud=[fournisseur:null, nomNoeud:null,OS:null ]
     public Noeud(String fournisseur, String nomNoeud, String OS){
-        this.fournisseur = fournisseur;
-        this.nomNoeud = nomNoeud;
-        this.OS = OS;
+        this.mapNoeud.fournisseur = fournisseur
+        this.mapNoeud.nomNoeud = nomNoeud
+        this.mapNoeud.OS = OS
     }
 
     public String getFournisseur(){
-        return fournisseur;
+        return this.mapNoeud.fournisseur;
     }
     public String getNomNoeud(){
-        return nomNoeud;
+        return this.mapNoeud.nomNoeud;
     }
     public String getOS(){
-        return OS;
+        return this.mapNoeud.OS;
     }
-    public void deployAll(){
-       switch (fournisseur){
+    public void deployNoeud(){
+       switch (this.mapNoeud.fournisseur){
             case "Amazon":
                 deployAllAmazon();
                 break;
@@ -30,19 +28,22 @@ class Noeud {
                 break;
         }
     }
+    void addElementToMap(String key, String elem){
+        mapNoeud[key] = elem
+    }
     private void deployAllAmazon(){
-        println("Amazon");
+        //todo
     }
     private void deployAllGoogle(){
-        println("Google");
+        //todo
     }
     public void deployJava(){
-
+        //todo
     }
     private void deployJavaAmazon(){
-
+        //todo
     }
     private void deploymentJavaGoogle(){
-
+        //todo
     }
 }
