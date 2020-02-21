@@ -61,11 +61,11 @@ class Main{
     static void main(String[] args){
         //files init
             //Nodes or coponents to deploy
-        File fh1 = new File("C:\\Users\\Nico\\Desktop\\risk\\groovyTuto\\src\\needs.txt")
+        File fh1 = new File("needs.txt")
         NeedsText = fh1.readLines()
         def NeedsMap = [:]
             // VM config
-        File fh2= new File("C:\\Users\\Nico\\Desktop\\risk\\groovyTuto\\src\\SPvm.txt")
+        File fh2= new File("SPvm.txt")
         SPvms = fh2.readLines('UTF-8')
         def VmMap = [:]
         //Parsing files
