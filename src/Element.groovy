@@ -32,6 +32,7 @@ class Element {
         def provider = element.get("provider");
         element.remove("provider")
         element.remove("deploymentType")
+        element.remove("os")
         println(element)
         def test = element.keySet()
         for(def tests : test){
@@ -48,6 +49,12 @@ class Element {
         if(elements.contains("test")) {
             switch (elementTodeploy) {
                 case "testgoogle":
+                    deployMe();
+                    break;
+                case "javagoogle":
+                    deployMe();
+                    break;
+                case "etc":
                     deployMe();
                     break;
                 default:
