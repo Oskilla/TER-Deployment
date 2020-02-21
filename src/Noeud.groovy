@@ -18,13 +18,16 @@ class Noeud {
         return OS;
     }
     public void deployAll(){
-        if (fournisseur == "Amazon"){
-            deployAllAmazon();
-        }else if (fournisseur == "Google"){
-            deployAllGoogle();
-        }
-        else{
-            println("il y a eu un probleme");
+       switch (fournisseur){
+            case "Amazon":
+                deployAllAmazon();
+                break;
+            case "Google":
+                deployAllGoogle();
+                break;
+            default:
+                println("si t'arrive là c'est qu'il y a eu un problème");
+                break;
         }
     }
     private void deployAllAmazon(){
