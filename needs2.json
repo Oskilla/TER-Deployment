@@ -3,7 +3,6 @@
       "provider": "local",
       "os": "Linux",
       "VM": {
-        "VM1": {
           "Java": {
             "version": "1.8"
           },
@@ -11,10 +10,9 @@
             "version": "6.1.1"
           },
           "Test_Server": {
-            "home_path": "path"
+            "home_path": "C:\\Users\\quest\\IdeaProjects\\TER-Deployment"
           },
-          "Script": {"home_path": "path"}
-        }
+          "Script": {"home_path": "C:\\Users\\quest\\IdeaProjects\\TER-Deployment"}
       },
       "Nodes": {
         "TestSuite": 1
@@ -23,26 +21,33 @@
   "Client":{
       "provider" : "local",
       "os": "Linux",
-      "VM" :{
-        "VM1":{
-          "Java" : {"version":"1.8"},
-          "Gradle": {"version":"6.1.1"},
-          "Script": {"home_path": "path"}
-        },
+      "VM" : {
+        "VM1": {
+          "Java": {
+            "version": "1.8"
+          },
+          "Gradle": {
+            "version": "6.1.1"
+          },
+          "Script": {
+            "home_path": "C:\\Users\\quest\\IdeaProjects\\TER-Deployment"
+          }
+        }
+      },
         "element": {
           "Script": 1
         }
-    }
 	},
   "Serv":{
     "provider" : "local",
     "os": "Linux",
     "VM" :{
-      "VM1":{
-        "Java" : {"version":"1.8"},
-        "Gradle": {"version":"6.1.1"},
-        "Test_Server": {
-          "home_path": "path"
+        "VM1":{
+          "Java" : {"version":"1.8"},
+          "Gradle": {"version":"6.1.1"},
+          "Test_Server": {
+            "home_path": "C:\\Users\\quest\\IdeaProjects\\TER-Deployment"
+          }
         }
       },
       "element": {

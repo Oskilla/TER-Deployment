@@ -92,7 +92,7 @@ class Element {
     }
     static void deployRunServer(Map serverPath ){
         def path = serverPath.get("home_path")
-        def cmd1 = "sh -c cd "+path
+        def cmd1 = "sh -c cd $path"
         cmd1.execute()
         def cmd2 = "gradle clean build"
         cmd2.execute()
