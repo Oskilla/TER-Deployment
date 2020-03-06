@@ -13,7 +13,7 @@ class Element {
             for (int i = 0; i < commonIndices; ++i) {
                 def numA = verA[i].toInteger()
                 def numB = verB[i].toInteger()
-                println "comparing $numA and $numB"
+                //println "comparing $numA and $numB"
 
                 if (numA != numB) {
                     return numA <=> numB
@@ -23,11 +23,12 @@ class Element {
             verA.size() <=> verB.size()
         }
 
-        println "sorted versions: $sorted"
-        println(sorted[1])
+      //  println "sorted versions: $sorted"
+        //println(sorted[1])
         return sorted[1] //returns the newest version
     }
     static elements = ["test","java","etc"];
+    // TODO
     static void deployElement(Map element,Map fournisseur){
         def provider = element.get("provider");
         element.remove("provider")
@@ -44,6 +45,7 @@ class Element {
             }
         }
     }
+
     private static call(String element, String fournisseur){
         def  elementTodeploy = element+fournisseur;
         if(elements.contains("test")) {
@@ -63,24 +65,10 @@ class Element {
             }
         }
     }
-    public static void deployJavaGoogle(){
 
-    }
-    public static void deployJavaAmazon(){
-
-    }
-    public static void deployJavaAutre(){
-
-    }
-
-
-    private static deployMe(){
-        File fh1 = new File("TEST.txt")
-        fh1.append("yay!!!")
-        return true;
-    }
     static void deployScriptLocal(Map scriptPath ){
-       def path = scriptPath.get("home_path")
+        println scriptPath
+       def path = scriptPath.home_path
         def cmd1 = "sh -c cd $path"
         println(cmd1)
         cmd1.execute()
@@ -91,6 +79,7 @@ class Element {
 
     }
     static void deployRunServer(Map serverPath ){
+        println "test"
         def path = serverPath.get("home_path")
         def cmd1 = "sh -c cd $path"
         cmd1.execute()

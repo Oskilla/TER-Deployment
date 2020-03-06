@@ -51,6 +51,7 @@ class Main{
         //def VmMap = data["deployement_info"]["provider"];
         for(def k in data.keySet()){
             def NodeMap = data.get(k).Nodes
+            println data.get(k).VM
          //   println()
             Noeud.deployNoeud(NodeMap,data.get(k).VM,data.get(k).provider)
         }
