@@ -63,6 +63,17 @@ class Element {
             }
         }
     }
+    public static void deployJavaGoogle(){
+
+    }
+    public static void deployJavaAmazon(){
+
+    }
+    public static void deployJavaAutre(){
+
+    }
+
+
     private static deployMe(){
         File fh1 = new File("TEST.txt")
         fh1.append("yay!!!")

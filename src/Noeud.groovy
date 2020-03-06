@@ -32,12 +32,12 @@ class Noeud {
                     switch (provider){
                         case "Amazon":
                             for(def j=0; j < i; j++) {
-                                deployAllAmazon()
+                                deployHelloWorldAmazon(element,Vm)
                             }
                             break;
                         case "Google":
                             for(def j=0; j < i; j++) {
-                                deployAllGoogle();
+                                deployAllGoogle(element,Vm);
                                // deployAllGoogle();
                             }
                             break;
@@ -46,6 +46,15 @@ class Noeud {
                             break;
                     }
                     break;
+                case "TestSuite":
+                    switch(provider){
+                        case "local":
+                            deployTestSuiteLocal(Vm)
+                            break;
+                        default:
+                            println("si t'arrive là c'est qu'il y a eu un problème");
+                            break;
+                    }
                 case "HelloWorld2":
                     switch (provider){
                         case "Amazon":
@@ -74,11 +83,13 @@ class Noeud {
     void addElementToMap(String key, String elem){
         mapNoeud[key] = elem
     }*/
-    private static void deployAllAmazon(){
+    private static void deployAllAmazon(Map element, Map Vm){
         File fh1 = new File("TEST.txt")
         fh1.append("tchoin!!! \n")
+        return;
     }
-    private static void deployAllGoogle(){
+    private static void deployAllGoogle(Map element, Map Vm){
+        println()
         File fh1 = new File("TEST.txt")
         fh1.append("yay!!! \n")
         return ;
@@ -92,10 +103,19 @@ class Noeud {
     private void deploymentJavaGoogle(){
         //todo
     }
-    private void deployHelloWorldAmazon(){
-        File fh1 = new File("TEST.txt")
-        fh1.append("tchoin!!! \n")
+    private static deployHelloWorldAmazon(Map Vm){
+        //Pour chaque element, verifier ou non son appartenance à la vm
+       // println(element);
+
+        //File fh1 = new File("TEST.txt")
+        //fh1.append("tchoin!!! \n")
         return ;
+    }
+   private static void deployTestSuiteLocal(Map Vm){
+       //Verifier si on a les bonnes versions de graddle et java, sinon il faut les installer
+        Element.deployScriptLocal();
+        Element.deployControllerLocal();
+       return;
     }
 
 }

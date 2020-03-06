@@ -1,35 +1,53 @@
 {
-    "deployement_info":{
-        "provider" : "Google",
-        "VM" :{
-          "VM1":{},
-
-          "VM2":{}
-        },
-     "Nodes":{
-      "HelloWorld" : 3,
-      "node2" : 3
-    },
-    "Elements":{
-      "Java" : {
-        "Version": 12.3
-      }
-    }
-	},
-    "deployement_info1": {
-      "provider": "Amazon",
+    "Serv&Script": {
+      "provider": "local",
+      "os": "Linux",
       "VM": {
-        "VM1": {},
-        "VM2": {}
+        "VM1": {
+          "Java": {
+            "version": "1.8"
+          },
+          "Gradle": {
+            "version": "6.1.1"
+          },
+          "Test_Server": {
+            "home_path": "path"
+          },
+          "Script": {"home_path": "path"}
+        }
       },
       "Nodes": {
-        "HelloWorld": 3,
-        "Pomme": 3
-      },
-      "Elements": {
-        "Java": {
-          "Version": 12.3
+        "TestSuite": 1
+      }
+    },
+  "Client":{
+      "provider" : "local",
+      "os": "Linux",
+      "VM" :{
+        "VM1":{
+          "Java" : {"version":"1.8"},
+          "Gradle": {"version":"6.1.1"},
+          "Script": {"home_path": "path"}
+        },
+        "element": {
+          "Script": 1
         }
+    }
+	},
+  "Serv":{
+    "provider" : "local",
+    "os": "Linux",
+    "VM" :{
+      "VM1":{
+        "Java" : {"version":"1.8"},
+        "Gradle": {"version":"6.1.1"},
+        "Test_Server": {
+          "home_path": "path"
+        }
+      },
+      "element": {
+        "Serv": 1
       }
     }
+  }
 }
