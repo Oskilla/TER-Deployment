@@ -49,7 +49,7 @@ class Noeud {
                 case "TestSuite":
                     switch(provider){
                         case "local":
-                            deployTestSuiteLocal(Vm)
+                            deployTestSuiteLocal(element,Vm)
                             break;
                         default:
                             println("si t'arrive là c'est qu'il y a eu un problème");
@@ -111,11 +111,17 @@ class Noeud {
         //fh1.append("tchoin!!! \n")
         return ;
     }
-   private static void deployTestSuiteLocal(Map Vm){
+   private static void deployTestSuiteLocal(Map element,Map Vm){
        //Verifier si on a les bonnes versions de graddle et java, sinon il faut les installer
-        Element.deployScriptLocal();
-        Element.deployControllerLocal();
+       println Vm.Gradle.version
+       if(!Element.mostRecentVersion(["1.8",Vm.Java.version]) == Vm.Java.version){
+           Element.installJavaLocal()
+       }
+       if(!Element.mostRecentVersion(["6.1.1",Vm.Gradle.version]) == Vm.Gradle.version){
+           Element.installGradleLocal()
+       }
+        Element.deployScriptLocal(element.Script);
+        Element.deployRunServer(element.Test_Server);
        return;
     }
-
 }

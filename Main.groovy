@@ -51,7 +51,8 @@ class Main{
         //def VmMap = data["deployement_info"]["provider"];
         for(def k in data.keySet()){
             def NodeMap = data.get(k).Nodes
-            Noeud.deployNoeud(NodeMap,null,data.get(k).provider)
+         //   println()
+            Noeud.deployNoeud(NodeMap,data.get(k).VM,data.get(k).provider)
         }
 
         //deploy(NodeMap,VmMap,(String)data.deployement_info.provider)
