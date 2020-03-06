@@ -19,5 +19,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="extras-jaxb1" level="project" />
+    <orderEntry type="library" name="extras-jaxb" level="project" />
   </component>
 </module>

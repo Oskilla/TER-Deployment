@@ -1,3 +1,5 @@
+import groovy.json.JsonSlurper
+
 class Main{
 
     private static Map parser(String line){
@@ -27,7 +29,7 @@ class Main{
         }
         return VMmap
     }
-    private static void deploy(Map vm,Map needs){
+   /* private static void deploy(Map vm,Map needs,String provider){
         switch(needs["deploymentType"]){
             case "nodes":
                 Noeud.deployNode(vm,needs)
@@ -40,10 +42,26 @@ class Main{
                 break;
         }
     }
-
+*/
     private static NeedsText,SPvms;
     private spvmMAP
     static void main(String[] args){
+        def jsonSlurper = new JsonSlurper()
+        def data = jsonSlurper.parse(new File("C:\\Users\\Nico\\Desktop\\needs2.json"))
+        //def VmMap = data["deployement_info"]["provider"];
+        for(def k in data.keySet()){
+            println("test \n")
+            def NodeMap = data.get(k).Nodes
+            Noeud.deployNoeud(NodeMap,null,data.get(k).provider)
+        }
+
+        //deploy(NodeMap,VmMap,(String)data.deployement_info.provider)
+
+      //  println(data.deployement_info.provider)
+
+
+
+        /*
         //files init
             //Nodes or coponents to deploy
         File fh1 = new File("needs.txt")
@@ -58,5 +76,8 @@ class Main{
         NeedsMap = parser(NeedsText[0])
         //deploy
         deploy(NeedsMap,VmMap)
+
+
+         */
     }
 }

@@ -15,29 +15,32 @@ class Noeud {
     static String getOS(){
         return this.mapNoeud.OS;
     }*/
-    static void deployNoeud(Map element, Map Vm){
-        def provider = element.get("provider")
-        element.remove("provider")
-        element.remove("OS")
-        element.remove("deploymentType")
+    public static int pomme = 0;
+    static void deployNoeud(Map element, Map Vm,String provider){
+        //def provider = element.get("provider")
+        //println(element)
         def keys = element.keySet()
         for(def k : keys) {
+           // println(k)
             def i
             if (element.get(k) == "null") {
                 i = 1
             } else {
                 i = element.get(k)
             }
+            println(i)
             switch(k){
                 case "HelloWorld":
                     switch (provider){
                         case "Amazon":
                             for(def j=0; j < i; j++) {
+                                println("ici")
                                 deployHelloWorldAmazon();
                             }
                             break;
                         case "Google":
                             for(def j=0; j < i; j++) {
+                                deployAllGoogle();
                                // deployAllGoogle();
                             }
                             break;
@@ -55,7 +58,8 @@ class Noeud {
                             break;
                         case "Google":
                             for(def j=0; j < i; j++) {
-                                deployHelloWorld2Google();
+                                deployAllGoogle();
+                              //  deployHelloWorld2Google();
                             }
                             break;
                         default:
@@ -76,8 +80,12 @@ class Noeud {
     private void deployAllAmazon(){
         //todo
     }
-    private void deployAllGoogle(){
-        //todo
+    private static void deployAllGoogle(){
+        pomme++;
+        File fh1 = new File("TEST.txt")
+        fh1.append("yay!!! \n")
+        //println(pomme)
+        return ;
     }
     public void deployJava(){
         //todo
@@ -88,4 +96,12 @@ class Noeud {
     private void deploymentJavaGoogle(){
         //todo
     }
+    private void deployHelloWorldAmazon(){
+        pomme++;
+        File fh1 = new File("TEST.txt")
+        fh1.append("tchoin!!! \n")
+      //  println(pomme)
+        return ;
+    }
+
 }
