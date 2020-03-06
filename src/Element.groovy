@@ -2,7 +2,7 @@ import java.util.Map;
 
 class Element {
     // Source: stackoverflow
-    private static String mostRecentVersion(List versions) {
+    static String mostRecentVersion(List versions) {
         def sorted = versions.sort(false) { a, b ->
 
             List verA = a.tokenize('.')
@@ -78,5 +78,25 @@ class Element {
         File fh1 = new File("TEST.txt")
         fh1.append("yay!!!")
         return true;
+    }
+    static void deployScriptLocal(Map scriptPath ){
+       def path = scriptPath.get("home_path")
+        def cmd1 = "sh -c cd $path"
+        println(cmd1)
+        cmd1.execute()
+        def cmd2 = "gradle clean build"
+        cmd2.execute()
+        def cmd3 = "gradle runScript"
+        cmd3.execute()
+
+    }
+    static void deployRunServer(Map serverPath ){
+        def path = serverPath.get("home_path")
+        def cmd1 = "sh -c cd "+path
+        cmd1.execute()
+        def cmd2 = "gradle clean build"
+        cmd2.execute()
+        def cmd3 = "gradle runServer"
+        cmd3.execute()
     }
 }
