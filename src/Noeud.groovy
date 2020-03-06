@@ -18,7 +18,6 @@ class Noeud {
     public static int pomme = 0;
     static void deployNoeud(Map element, Map Vm,String provider){
         //def provider = element.get("provider")
-        //println(element)
         def keys = element.keySet()
         for(def k : keys) {
            // println(k)
@@ -28,14 +27,12 @@ class Noeud {
             } else {
                 i = element.get(k)
             }
-            println(i)
             switch(k){
                 case "HelloWorld":
                     switch (provider){
                         case "Amazon":
                             for(def j=0; j < i; j++) {
-                                println("ici")
-                                deployHelloWorldAmazon();
+                                deployAllAmazon()
                             }
                             break;
                         case "Google":
@@ -77,14 +74,13 @@ class Noeud {
     void addElementToMap(String key, String elem){
         mapNoeud[key] = elem
     }*/
-    private void deployAllAmazon(){
-        //todo
+    private static void deployAllAmazon(){
+        File fh1 = new File("TEST.txt")
+        fh1.append("tchoin!!! \n")
     }
     private static void deployAllGoogle(){
-        pomme++;
         File fh1 = new File("TEST.txt")
         fh1.append("yay!!! \n")
-        //println(pomme)
         return ;
     }
     public void deployJava(){
@@ -97,10 +93,8 @@ class Noeud {
         //todo
     }
     private void deployHelloWorldAmazon(){
-        pomme++;
         File fh1 = new File("TEST.txt")
         fh1.append("tchoin!!! \n")
-      //  println(pomme)
         return ;
     }
 

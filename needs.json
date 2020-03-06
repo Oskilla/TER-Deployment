@@ -1,0 +1,15 @@
+{
+	"Deploiement" :{
+		"elements" :{
+			"element1" :{
+				"os" : "Windows"
+				"provider" : "Google"
+				"test" : 13.2
+			}
+		}
+		"node" :{
+	
+		}
+
+	}
+}

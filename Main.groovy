@@ -47,10 +47,9 @@ class Main{
     private spvmMAP
     static void main(String[] args){
         def jsonSlurper = new JsonSlurper()
-        def data = jsonSlurper.parse(new File("C:\\Users\\Nico\\Desktop\\needs2.json"))
+        def data = jsonSlurper.parse(new File("needs2.json"))
         //def VmMap = data["deployement_info"]["provider"];
         for(def k in data.keySet()){
-            println("test \n")
             def NodeMap = data.get(k).Nodes
             Noeud.deployNoeud(NodeMap,null,data.get(k).provider)
         }
