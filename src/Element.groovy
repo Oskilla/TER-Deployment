@@ -67,14 +67,12 @@ class Element {
     }
 
     static void deployScriptLocal(Map scriptPath ){
-        println scriptPath
        def path = scriptPath.home_path
         def cmd1 = "sh -c cd $path"
-        println(cmd1)
         cmd1.execute()
-        def cmd2 = "gradle clean build"
+        def cmd2 = "sh gradle clean build"
         cmd2.execute()
-        def cmd3 = "gradle runScript"
+        def cmd3 = "sh gradle runScript"
         cmd3.execute()
 
     }
@@ -83,9 +81,9 @@ class Element {
         def path = serverPath.get("home_path")
         def cmd1 = "sh -c cd $path"
         cmd1.execute()
-        def cmd2 = "gradle clean build"
+        def cmd2 = "sh gradle clean build"
         cmd2.execute()
-        def cmd3 = "gradle runServer"
+        def cmd3 = "sh gradle runServer"
         cmd3.execute()
     }
 }
