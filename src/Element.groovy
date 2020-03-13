@@ -85,7 +85,9 @@ class Element {
 
     }
     static void installGradleLocal(){
-        println "pas la bonne version lol"
-       // def cmd1 = "sh "
+        println "c'est pas la bonne version lel"
+    }
+    static void installJavaLocal(){
+       println "ptdr frere c'est quoi cette version xD"
     }
 }
