@@ -3,7 +3,7 @@ class Noeud {
         //def provider = element.get("provider")
         def keys = element.keySet()
         for(def k : keys) {
-           // println(k)
+            println(k)
             def i
             if (element.get(k) == "null") {
                 i = 1
@@ -35,9 +35,10 @@ class Noeud {
                             deployTestSuiteLocal(element,Vm)
                             break;
                         default:
-                            println("si t'arrive là c'est qu'il y a eu un problème");
+                            println("si t'arrive là c'est qu'il y a eu un problème1");
                             break;
                     }
+                    break;
                 case "HelloWorld2":
                     switch (provider){
                         case "Amazon":
@@ -52,7 +53,7 @@ class Noeud {
                             }
                             break;
                         default:
-                            println("si t'arrive là c'est qu'il y a eu un problème");
+                            println("si t'arrive là c'est qu'il y a eu un problème2"+k);
                             break;
                     }
                     break;

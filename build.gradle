@@ -1,0 +1,95 @@
+
+version '1.0-SNAPSHOT'
+
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.11'
+        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.9.2'
+    }
+}
+
+
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'com.google.protobuf'
+apply plugin: 'org.asciidoctor.convert'
+
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    compile 'com.google.protobuf:protobuf-java:3.0.0'
+    testCompile 'org.codehaus.groovy:groovy-all:2.3.11'
+    testCompile "junit:junit:4.12"
+
+}
+
+task fatjar(type: Jar){
+    manifest{
+        attributes 'Main-Class' : 'Main'
+    }
+    from {
+        configurations
+            .runtime
+            .collect{ it.isDirectory() ? it : zipTree (it) }
+
+    }
+    with jar
+}
+
+task runScript(type: JavaExec) {
+    description "Run Groovy script"
+
+    main = "Main"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task runServer(type: JavaExec) {
+    dependsOn gradle.includedBuild('TestApplication').task(':runServer')
+}
+
+sourceSets {
+    main {
+        proto {
+            srcDir 'src/main/protobuf'
+        }
+        java {
+            srcDirs += 'build/generated/source/proto'
+        }
+    }
+
+    test {
+        proto {
+            srcDir 'src/test/protobuf'
+        }
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.0.0'
+    }
+}
+
+asciidoctor {
+
+}
+
+
+
+//build.dependsOn runScript
+build.dependsOn fatjar
+

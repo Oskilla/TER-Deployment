@@ -10,49 +10,13 @@
             "version": "6.1.1"
           },
           "Test_Server": {
-            "home_path": "C:\\Users\\Nico\\Desktop\\TER\\ter---dsl-for-cloud-testing"
+            "home_path": "/home/oskilla/Master/TER/TER-Deployment/"
           },
-          "Script": {"home_path": "C:\\Users\\Nico\\Desktop\\TER\\ter---dsl-for-cloud-testing"}
+          "Script": {"home_path": "/home/oskilla/Master/TER/TER-Deployment/"}
       },
       "Nodes": {
         "TestSuite": 1
       }
-    },
-  "Client":{
-      "provider" : "local",
-      "os": "Linux",
-      "VM" : {
-        "VM1": {
-          "Java": {
-            "version": "1.8"
-          },
-          "Gradle": {
-            "version": "6.1.1"
-          },
-          "Script": {
-            "home_path": "C:\\Users\\Nico\\Desktop\\TER\\ter---dsl-for-cloud-testing"
-          }
-        }
-      },
-        "element": {
-          "Script": 1
-        }
-	},
-  "Serv":{
-    "provider" : "local",
-    "os": "Linux",
-    "VM" :{
-        "VM1":{
-          "Java" : {"version":"1.8"},
-          "Gradle": {"version":"6.1.1"},
-          "Test_Server": {
-            "home_path": "C:\\Users\\Nico\\Desktop\\TER\\ter---dsl-for-cloud-testing"
-          }
-        }
-      },
-      "element": {
-        "Serv": 1
-      }
     }
-  }
+
 }

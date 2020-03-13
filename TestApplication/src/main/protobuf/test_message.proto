@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+option java_package = "proto.test";
+
+message Test {
+
+    required string methodName = 1;
+    repeated string args = 2;
+
+
+}
+
+message TestContainer {
+    repeated Test tests = 1;
+}

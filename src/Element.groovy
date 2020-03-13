@@ -66,24 +66,37 @@ class Element {
         }
     }
 
-    static void deployScriptLocal(Map scriptPath ){
-       def path = scriptPath.home_path
-        def cmd1 = "sh -c cd $path"
-        cmd1.execute()
-        def cmd2 = "sh gradle clean build"
-        cmd2.execute()
-        def cmd3 = "sh gradle runScript"
-        cmd3.execute()
+    static void deployScriptLocal(Map scriptPath ) {
+        def path = scriptPath.home_path
+
+        //new File("cmd.sh")
+        def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path | gradle clean build | gradle runScript"
+        def proc = cmd1.execute()
+        proc.waitFor()
+      //  println "$proc.text"
+      /*  def cmd2 = "gradle clean build"
+        proc = cmd2.execute()
+        proc.waitForOrKill(1000)
+        def cmd3 = "gradle runScript"
+        proc = cmd3.execute()
+        proc.waitForOrKill(1000)*/
 
     }
     static void deployRunServer(Map serverPath ){
-        println "test"
+
         def path = serverPath.get("home_path")
-        def cmd1 = "sh -c cd $path"
-        cmd1.execute()
-        def cmd2 = "sh gradle clean build"
-        cmd2.execute()
-        def cmd3 = "sh gradle runServer"
-        cmd3.execute()
+        def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path | gradle clean build | gradle runServer"
+        def proc = cmd1.execute()
+        proc.waitFor()
+     /*   def cmd2 = "gradle clean build"
+        proc = cmd2.execute()
+        proc.waitForOrKill(1000)
+        def cmd3 = "gradle runServer"
+        proc = cmd3.execute()
+        proc.waitForOrKill(1000)*/
+    }
+    static void installGradleLocal(){
+        println "pas la bonne version lol"
+       // def cmd1 = "sh "
     }
 }
