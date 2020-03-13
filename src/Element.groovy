@@ -70,30 +70,19 @@ class Element {
         def path = scriptPath.home_path
 
         //new File("cmd.sh")
-        def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path | gradle clean build | gradle runScript"
+        def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path | gradle clean build | gradle --parallel runScript"
+     //   def cmd1 = "rhythmbox"
         def proc = cmd1.execute()
-        proc.waitFor()
-      //  println "$proc.text"
-      /*  def cmd2 = "gradle clean build"
-        proc = cmd2.execute()
-        proc.waitForOrKill(1000)
-        def cmd3 = "gradle runScript"
-        proc = cmd3.execute()
-        proc.waitForOrKill(1000)*/
+
 
     }
     static void deployRunServer(Map serverPath ){
 
         def path = serverPath.get("home_path")
-        def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path | gradle clean build | gradle runServer"
+        def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path  | gradle --parallel runServer"
+        //def cmd1 = "firefox"
         def proc = cmd1.execute()
-        proc.waitFor()
-     /*   def cmd2 = "gradle clean build"
-        proc = cmd2.execute()
-        proc.waitForOrKill(1000)
-        def cmd3 = "gradle runServer"
-        proc = cmd3.execute()
-        proc.waitForOrKill(1000)*/
+
     }
     static void installGradleLocal(){
         println "pas la bonne version lol"
