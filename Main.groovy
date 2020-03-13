@@ -47,14 +47,19 @@ class Main{
     private spvmMAP
     static void main(String[] args){
         def jsonSlurper = new JsonSlurper()
-        def data = jsonSlurper.parse(new File("needs2.json"))
+        def data = jsonSlurper.parse(new File("needs3.json"))
         //def VmMap = data["deployement_info"]["provider"];
         for(def k in data.keySet()){
             def NodeMap = data.get(k).Nodes
-            println data.get(k).VM
-         //   println()
-            Noeud.deployNoeud(NodeMap,data.get(k).VM,data.get(k).provider)
+            def elemToDeploy = data.get(k).element
+            if (NodeMap != null) {
+                Noeud.deployNoeud(NodeMap, data.get(k).VM, data.get(k).provider)
+            }
+            if(elemToDeploy!=null) {
+                Element.deployElement(elemToDeploy, data.get(k).VM, data.get(k).provider)
+            }
         }
+
 
         //deploy(NodeMap,VmMap,(String)data.deployement_info.provider)
 

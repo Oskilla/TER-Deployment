@@ -29,8 +29,24 @@ class Element {
     }
     static elements = ["test","java","etc"];
     // TODO
-    static void deployElement(Map element,Map fournisseur){
-        def provider = element.get("provider");
+    static void deployElement(Map element, Map VM, String fournisseur){
+        def keys = element.keySet()
+        for (def k : keys){
+
+            switch (k){
+                case "Script" :
+                    this.installScript(element, VM);
+                    break;
+                case "Serv" :
+                    this.installServer(element, VM);
+                    break;
+                default:
+
+                    break;
+            }
+        }
+    //static void deployElement(Map element,Map fournisseur){
+       /* def provider = element.get("provider");
         element.remove("provider")
         element.remove("deploymentType")
         element.remove("os")
@@ -43,7 +59,8 @@ class Element {
             else if (element.get("tests") != "null" && !mostRecentVersion([element.get("tests"),fournisseur.get(tests)]) == element.get("tests") ){
                 call(tests,provider)
             }
-        }
+        }*/
+
     }
 
     private static call(String element, String fournisseur){
@@ -89,5 +106,26 @@ class Element {
     }
     static void installJavaLocal(){
        println "ptdr frere c'est quoi cette version xD"
+    }
+    static void installScript(Map element,Map Vm){
+        if(!this.mostRecentVersion(["1.8",Vm.Java.version]) == Vm.Java.version){
+            this.installJavaLocal()
+        }
+        if(!this.mostRecentVersion(["6.1.1",Vm.Gradle.version]) == Vm.Gradle.version){
+            this.installGradleLocal()
+        }
+
+        def cmd = "sh source /etc/profile.d/gradle.sh | gradle runScript"
+        cmd.execute()
+    }
+    static void installServer(Map element,Map Vm){
+        if(!this.mostRecentVersion(["1.8",Vm.Java.version]) == Vm.Java.version){
+            this.installJavaLocal()
+        }
+        if(!this.mostRecentVersion(["6.1.1",Vm.Gradle.version]) == Vm.Gradle.version){
+            this.installGradleLocal()
+        }
+        def cmd = "sh source /etc/profile.d/gradle.sh |gradle runServer"
+        cmd.execute()
     }
 }

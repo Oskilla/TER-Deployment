@@ -1,0 +1,54 @@
+{
+    "Serv&Script": {
+      "provider": "local",
+      "os": "Linux",
+      "VM": {
+          "Java": {
+            "version": "1.8"
+          },
+          "Gradle": {
+            "version": "6.1.1"
+          },
+          "Test_Server": {
+            "home_path": "C:\\Users\\quest\\IdeaProjects\\TER-Deployment"
+          },
+          "Script": {"home_path": "C:\\Users\\quest\\IdeaProjects\\TER-Deployment"}
+      },
+      "Nodes": {
+        "TestSuite": 1
+      }
+    },
+  "Client":{
+      "provider" : "local",
+      "os": "Linux",
+      "VM" : {
+          "Java": {
+            "version": "1.8"
+          },
+          "Gradle": {
+            "version": "6.1.1"
+          },
+          "Script": {
+            "home_path": "C:\\Users\\quest\\IdeaProjects\\TER-Deployment"
+          }
+        },
+        "element": {
+          "Script": 1
+        }
+	},
+  "Serv":{
+    "provider" : "local",
+    "os": "Linux",
+    "VM" :{
+          "Java" : {"version":"1.8"},
+          "Gradle": {"version":"6.1.1"},
+          "Test_Server": {
+            "home_path": "C:\\Users\\quest\\IdeaProjects\\TER-Deployment"
+          }
+      },
+      "element": {
+        "Serv": 1
+      }
+    }
+  }
+}
