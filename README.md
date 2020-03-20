@@ -17,4 +17,5 @@ for linux
 How to run :
 
 groovyc Main.groovy src/Element.groovy src/Noeud.groovy
+
 groovy Main.groovy src/Element.groovy src/Noeud.groovy
