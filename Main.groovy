@@ -43,6 +43,16 @@ class Main{
         }
     }
 */
+
+    def static Node = {nodeMap,provider,VM -> Noeud.deployNoeud(nodeMap,VM, provider )}
+   // def static Elem = {elemToDeploy, provider, VM -> Element.deployElement(elemToDeploy, provider, VM)}
+    def static deploy(action){
+        [the:{node ->
+            [with:{provider->
+                [on:{vmname -> action(node,provider,vmname)}]
+            }]
+        }]
+    }
     private static NeedsText,SPvms;
     private spvmMAP
     static void main(String[] args){
@@ -59,31 +69,10 @@ class Main{
                 Element.deployElement(elemToDeploy, data.get(k).VM, data.get(k).provider)
             }
         }
-	println "cette ligne ne fait rien"
-
-        //deploy(NodeMap,VmMap,(String)data.deployement_info.provider)
-
-      //  println(data.deployement_info.provider)
 
 
+        deploy Node the "application" with "Google" on "VM1"
+     //   deploy Elem the "java" with "Amazon" on "VM1"
 
-        /*
-        //files init
-            //Nodes or coponents to deploy
-        File fh1 = new File("needs.txt")
-        NeedsText = fh1.readLines()
-        def NeedsMap = [:]
-            // VM config
-        File fh2= new File("SPvm.txt")
-        SPvms = fh2.readLines('UTF-8')
-        def VmMap = [:]
-        //Parsing files
-        VmMap = parser(SPvms[0])
-        NeedsMap = parser(NeedsText[0])
-        //deploy
-        deploy(NeedsMap,VmMap)
-
-
-         */
     }
 }

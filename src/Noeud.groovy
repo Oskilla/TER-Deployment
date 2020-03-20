@@ -1,3 +1,5 @@
+import groovy.json.JsonSlurper
+
 class Noeud {
     static void deployNoeud(Map element, Map Vm,String provider){
         //def provider = element.get("provider")
@@ -63,9 +65,29 @@ class Noeud {
 
         }
     }
+    static void deployNoeud(String element,String Vm,String provider){
+        def jsonSlurper = new JsonSlurper()
+        def data = jsonSlurper.parse(new File("needs3.json"))
+        def VmMap = data[Vm]
+        switch(element){
+            case "TestSuite":
+                switch(provider){
+                    case "local":
+                        deployTestSuiteLocal(element,VmMap)
+                        break;
+                    default:
+                        println("si t'arrive là c'est qu'il y a eu un problème1");
+                        break;
+                }
+                break;
+            default:
+                println("Noeud non connus")
+                break;
+        }
+    }
 
 
-   private static void deployTestSuiteLocal(Map element,Map Vm){
+   private static void deployTestSuiteLocal(Map element, Map Vm){
        //Verifier si on a les bonnes versions de graddle et java, sinon il faut les installer
        println Vm.Gradle.version
        if(!Element.mostRecentVersion(["1.8",Vm.Java.version]) == Vm.Java.version){
