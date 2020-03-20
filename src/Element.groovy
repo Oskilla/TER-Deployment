@@ -86,19 +86,25 @@ class Element {
     static void deployScriptLocal(Map scriptPath ) {
         def path = scriptPath.home_path
 
-        //new File("cmd.sh")
-        def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path | gradle clean build | gradle --parallel runScript"
+       // def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path | gradle clean build | gradle --parallel runScript"
      //   def cmd1 = "rhythmbox"
-        def proc = cmd1.execute()
-
-
+        File cmd = new File('cmd1.sh')
+        cmd.write "cd $path \n"
+        cmd<< "gradle clean build \n"
+        cmd<< "gradle runScript"
+        "chmod +x cmd1.sh".execute()
     }
+
+
     static void deployRunServer(Map serverPath ){
 
         def path = serverPath.get("home_path")
-        def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path  | gradle --parallel runServer"
-        //def cmd1 = "firefox"
-        def proc = cmd1.execute()
+        //def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path  | gradle --parallel runServer"
+        File cmd = new File('cmd2.sh')
+        cmd.write "cd $path \n"
+        cmd << "gradle clean build \n"
+        cmd << "gradle runScript \n"
+        "chmod +x cmd2.sh".execute()
 
     }
     static void installGradleLocal(){
