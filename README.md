@@ -12,3 +12,7 @@ for linux
 5) make the script executable : sudo chmod +x /etc/profile.d/groovy.sh
 6) now enter the line : source /etc/profile.d/groovy.sh
 7) check that groovy work with the line : groovy -version
+
+
+How to run :
+groovy Main.groovy src/Element.groovy src/Noeud.groovy
