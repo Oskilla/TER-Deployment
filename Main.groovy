@@ -59,7 +59,7 @@ class Main{
                 Element.deployElement(elemToDeploy, data.get(k).VM, data.get(k).provider)
             }
         }
-
+	println "cette ligne ne fait rien"
 
         //deploy(NodeMap,VmMap,(String)data.deployement_info.provider)
 
