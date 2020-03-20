@@ -13,7 +13,7 @@ class Element {
             for (int i = 0; i < commonIndices; ++i) {
                 def numA = verA[i].toInteger()
                 def numB = verB[i].toInteger()
-                println "comparing $numA and $numB"
+                //println "comparing $numA and $numB"
 
                 if (numA != numB) {
                     return numA <=> numB
@@ -23,13 +23,30 @@ class Element {
             verA.size() <=> verB.size()
         }
 
-        println "sorted versions: $sorted"
-        println(sorted[1])
+      //  println "sorted versions: $sorted"
+        //println(sorted[1])
         return sorted[1] //returns the newest version
     }
     static elements = ["test","java","etc"];
-    static void deployElement(Map element,Map fournisseur){
-        def provider = element.get("provider");
+    // TODO
+    static void deployElement(Map element, Map VM, String fournisseur){
+        def keys = element.keySet()
+        for (def k : keys){
+
+            switch (k){
+                case "Script" :
+                    this.installScript(element, VM);
+                    break;
+                case "Serv" :
+                    this.installServer(element, VM);
+                    break;
+                default:
+
+                    break;
+            }
+        }
+    //static void deployElement(Map element,Map fournisseur){
+       /* def provider = element.get("provider");
         element.remove("provider")
         element.remove("deploymentType")
         element.remove("os")
@@ -42,8 +59,10 @@ class Element {
             else if (element.get("tests") != "null" && !mostRecentVersion([element.get("tests"),fournisseur.get(tests)]) == element.get("tests") ){
                 call(tests,provider)
             }
-        }
+        }*/
+
     }
+
     private static call(String element, String fournisseur){
         def  elementTodeploy = element+fournisseur;
         if(elements.contains("test")) {
@@ -63,40 +82,50 @@ class Element {
             }
         }
     }
-    public static void deployJavaGoogle(){
 
-    }
-    public static void deployJavaAmazon(){
+    static void deployScriptLocal(Map scriptPath ) {
+        def path = scriptPath.home_path
 
-    }
-    public static void deployJavaAutre(){
+        //new File("cmd.sh")
+        def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path | gradle clean build | gradle --parallel runScript"
+     //   def cmd1 = "rhythmbox"
+        def proc = cmd1.execute()
 
-    }
-
-
-    private static deployMe(){
-        File fh1 = new File("TEST.txt")
-        fh1.append("yay!!!")
-        return true;
-    }
-    static void deployScriptLocal(Map scriptPath ){
-       def path = scriptPath.get("home_path")
-        def cmd1 = "sh -c cd $path"
-        println(cmd1)
-        cmd1.execute()
-        def cmd2 = "gradle clean build"
-        cmd2.execute()
-        def cmd3 = "gradle runScript"
-        cmd3.execute()
 
     }
     static void deployRunServer(Map serverPath ){
+
         def path = serverPath.get("home_path")
-        def cmd1 = "sh -c cd $path"
-        cmd1.execute()
-        def cmd2 = "gradle clean build"
-        cmd2.execute()
-        def cmd3 = "gradle runServer"
-        cmd3.execute()
+        def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path  | gradle --parallel runServer"
+        //def cmd1 = "firefox"
+        def proc = cmd1.execute()
+
+    }
+    static void installGradleLocal(){
+        println "c'est pas la bonne version lel"
+    }
+    static void installJavaLocal(){
+       println "ptdr frere c'est quoi cette version xD"
+    }
+    static void installScript(Map element,Map Vm){
+        if(!this.mostRecentVersion(["1.8",Vm.Java.version]) == Vm.Java.version){
+            this.installJavaLocal()
+        }
+        if(!this.mostRecentVersion(["6.1.1",Vm.Gradle.version]) == Vm.Gradle.version){
+            this.installGradleLocal()
+        }
+
+        def cmd = "sh source /etc/profile.d/gradle.sh | gradle runScript"
+        cmd.execute()
+    }
+    static void installServer(Map element,Map Vm){
+        if(!this.mostRecentVersion(["1.8",Vm.Java.version]) == Vm.Java.version){
+            this.installJavaLocal()
+        }
+        if(!this.mostRecentVersion(["6.1.1",Vm.Gradle.version]) == Vm.Gradle.version){
+            this.installGradleLocal()
+        }
+        def cmd = "sh source /etc/profile.d/gradle.sh |gradle runServer"
+        cmd.execute()
     }
 }

@@ -19,6 +19,17 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="extras-jaxb1" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/Documents/groovy-2.5.10/lib/extras-jaxb" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$USER_HOME$/Documents/groovy-2.5.10/lib/extras-jaxb" recursive="false" />
+      </library>
+    </orderEntry>
     <orderEntry type="library" name="extras-jaxb" level="project" />
+    <orderEntry type="library" name="groovy-2.5.10" level="application" />
   </component>
 </module>

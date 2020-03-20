@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+option java_package = "proto.specs";
+
+message Specs {
+
+    required string nodeType = 1;
+    required string address = 2;
+    required int32 port = 3;
+
+}
