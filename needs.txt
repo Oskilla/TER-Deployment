@@ -1,2 +1,0 @@
-deploymentType:elements,os:value,provider:google,java:13.2
-deploymentType:nodes,os:value,provider:google,HelloWorldNode:nbRequired,HelloWorldNode2:nbRequired
