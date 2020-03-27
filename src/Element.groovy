@@ -88,11 +88,13 @@ class Element {
 
        // def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path | gradle clean build | gradle --parallel runScript"
      //   def cmd1 = "rhythmbox"
-        File cmd = new File('cmd1.sh')
+        File cmd = new File(path+'cmd1.sh')
         cmd.write "cd $path \n"
         cmd<< "gradle clean build \n"
         cmd<< "gradle runScript"
-        "chmod +x cmd1.sh".execute()
+        def exec = "chmod +x $path/cmd1.sh".execute()
+        exec.waitFor()
+        "$path/cmd1.sh".execute()
     }
 
 
@@ -100,11 +102,13 @@ class Element {
 
         def path = serverPath.get("home_path")
         //def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path  | gradle --parallel runServer"
-        File cmd = new File('cmd2.sh')
+        File cmd = new File(path +'/cmd2.sh')
         cmd.write "cd $path \n"
         cmd << "gradle clean build \n"
         cmd << "gradle runScript \n"
-        "chmod +x cmd2.sh".execute()
+        def exec = "chmod +x $path/cmd2.sh".execute()
+        exec.waitFor()
+        "$path/cmd2.sh".execute()
 
     }
     static void installGradleLocal(){
