@@ -104,10 +104,11 @@ class Element {
     static void deployRunServer(Map serverPath ){
         def path = serverPath.get("home_path")
         //def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path  | gradle --parallel runServer"
-        File cmd = new File(path+'cmd2.sh')
+        println "runServer"
+        File cmd = new File(path+'/cmd2.sh')
         cmd.write( "cd $path \n")
         cmd << "gradle clean build \n"
-        cmd << "touch fich2\n"
+        cmd << "touch fich2.txt \n"
         cmd << "gradle runServeur \n"
 
         def exec = "chmod +x $path/cmd2.sh".execute()
