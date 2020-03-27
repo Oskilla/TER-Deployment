@@ -23,7 +23,7 @@ class Noeud {
                         case "Google":
                             for(def j=0; j < i; j++) {
                                 deployAllGoogle(element,Vm);
-                               // deployAllGoogle();
+                                // deployAllGoogle();
                             }
                             break;
                         default:
@@ -51,7 +51,7 @@ class Noeud {
                         case "Google":
                             for(def j=0; j < i; j++) {
                                 deployAllGoogle();
-                              //  deployHelloWorld2Google();
+                                //  deployHelloWorld2Google();
                             }
                             break;
                         default:
@@ -68,13 +68,18 @@ class Noeud {
     static void deployNoeud(String element,String Vm,String provider){
 
         def jsonSlurper = new JsonSlurper()
-        def data = jsonSlurper.parse(new File("needs3.json"))
-        def VmMap = data[Vm]
+        def data = jsonSlurper.parse(new File("/home/paci/Documents/TER-Deployment/needs3.json"))
+        println data["Client"]["VM"]
+        println element
+        println Vm
+        println provider
+        def VmMap = data["Client"]["VM"]
         switch(element){
             case "TestSuite":
                 switch(provider){
                     case "local":
-                        deployTestSuiteLocal(element,VmMap)
+                        deployTestSuiteLocal(VmMap)
+                        println "yep"
                         break;
                     default:
                         println("si t'arrive là c'est qu'il y a eu un problème1");
@@ -88,17 +93,17 @@ class Noeud {
     }
 
 
-   private static void deployTestSuiteLocal(Map element, Map Vm){
-       //Verifier si on a les bonnes versions de graddle et java, sinon il faut les installer
-       println Vm.Gradle.version
-       if(!Element.mostRecentVersion(["1.8",Vm.Java.version]) == Vm.Java.version){
-           Element.installJavaLocal()
-       }
-       if(!Element.mostRecentVersion(["6.1.1",Vm.Gradle.version]) == Vm.Gradle.version){
-           Element.installGradleLocal()
-       }
+    private static void deployTestSuiteLocal(Map Vm){
+        //Verifier si on a les bonnes versions de graddle et java, sinon il faut les installer
+        println Vm.Gradle.version
+        if(!Element.mostRecentVersion(["1.8",Vm.Java.version]) == Vm.Java.version){
+            Element.installJavaLocal()
+        }
+        if(!Element.mostRecentVersion(["6.1.1",Vm.Gradle.version]) == Vm.Gradle.version){
+            Element.installGradleLocal()
+        }
         Element.deployScriptLocal(Vm.Script);
         Element.deployRunServer(Vm.Test_Server);
-       return;
+        return;
     }
-}
+}   
