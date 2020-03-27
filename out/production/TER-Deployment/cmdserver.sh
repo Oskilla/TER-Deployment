@@ -1,1 +1,0 @@
-cd /home/oskilla/Master/TER/TER-Deployment/ | gradle clean build | gradle runServer
