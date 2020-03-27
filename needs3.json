@@ -10,9 +10,9 @@
             "version": "6.1.1"
           },
           "Test_Server": {
-            "home_path": "C:\\Users\\quest\\IdeaProjects\\TER-Deployment"
+            "home_path": "/home/oskilla/Master/TER/ter---dsl-for-cloud-testing/"
           },
-          "Script": {"home_path": "C:\\Users\\quest\\IdeaProjects\\TER-Deployment"}
+          "Script": {"home_path": "/home/oskilla/Master/TER/ter---dsl-for-cloud-testing/"}
       },
       "Nodes": {
         "TestSuite": 1

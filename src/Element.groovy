@@ -88,6 +88,7 @@ class Element {
 
        // def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path | gradle clean build | gradle --parallel runScript"
      //   def cmd1 = "rhythmbox"
+<<<<<<< HEAD
         File cmd = new File(path+'cmd1.sh')
         cmd.write "cd $path \n"
         cmd<< "gradle clean build \n"
@@ -95,22 +96,37 @@ class Element {
         def exec = "chmod +x $path/cmd1.sh".execute()
         exec.waitFor()
         "$path/cmd1.sh".execute()
+=======
+        File cmd = new File(path+'/cmd1.sh')
+        cmd.write( "gradle clean build \n")
+        cmd<< "gradle runScript"
+        def exec1 = "chmod +x $path/cmd1.sh".execute()
+        exec1.waitFor()
+        "$path/cmd1.sh".execute()
+
+>>>>>>> 90580e847b58f6f091d7e3a931b7e87a70c33ce4
     }
 
 
     static void deployRunServer(Map serverPath ){
-
         def path = serverPath.get("home_path")
         //def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path  | gradle --parallel runServer"
+<<<<<<< HEAD
         File cmd = new File(path +'/cmd2.sh')
         cmd.write "cd $path \n"
         cmd << "gradle clean build \n"
         cmd << "gradle runScript \n"
+=======
+        File cmd = new File(path+'/cmd2.sh')
+        cmd.write( "gradle clean build \n")
+        cmd << "gradle runServeur \n"
+>>>>>>> 90580e847b58f6f091d7e3a931b7e87a70c33ce4
         def exec = "chmod +x $path/cmd2.sh".execute()
         exec.waitFor()
         "$path/cmd2.sh".execute()
 
     }
+
     static void installGradleLocal(){
         println "c'est pas la bonne version lel"
     }

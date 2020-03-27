@@ -1,10 +1,10 @@
 <component name="libraryTable">
   <library name="extras-jaxb">
     <CLASSES>
-      <root url="file://$USER_HOME$/Documents/groovy-2.5.10/lib/extras-jaxb" />
+      <root url="file:///usr/share/groovy/groovy-2.5.10/lib/extras-jaxb" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
-    <jarDirectory url="file://$USER_HOME$/Documents/groovy-2.5.10/lib/extras-jaxb" recursive="false" />
+    <jarDirectory url="file:///usr/share/groovy/groovy-2.5.10/lib/extras-jaxb" recursive="false" />
   </library>
 </component>
