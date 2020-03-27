@@ -1,7 +1,7 @@
+
 import groovy.json.JsonSlurper
 
 class Main{
-
     private static Map parser(String line){
         def VMmap = [:]
         while(line.length() > 0) {
