@@ -56,6 +56,7 @@ class Main{
     private static NeedsText,SPvms;
     private spvmMAP
     static void main(String[] args){
+        /*
         def jsonSlurper = new JsonSlurper()
         def data = jsonSlurper.parse(new File("needs3.json"))
         //def VmMap = data["deployement_info"]["provider"];
@@ -69,9 +70,9 @@ class Main{
                 Element.deployElement(elemToDeploy, data.get(k).VM, data.get(k).provider)
             }
         }
+    */
 
-
-        deploy Node the "application" with "Google" on "VM1"
+      deploy Node the "TestSuite" with "local" on "needs3.json"
      //   deploy Elem the "java" with "Amazon" on "VM1"
 
     }

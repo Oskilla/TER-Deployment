@@ -88,9 +88,12 @@ class Element {
 
        // def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path | gradle clean build | gradle --parallel runScript"
      //   def cmd1 = "rhythmbox"
-        File cmd = new File(path+'/cmd1.sh')
-        cmd.write( "gradle clean build \n")
-        cmd<< "gradle runScript"
+        File cmd = new File(path+'cmd1.sh')
+        cmd.write( "cd $path \n")
+        cmd <<  "gradle clean build \n"
+        cmd << "touch fich1\n"
+        cmd<< "gradle runScript\n"
+        cmd << "touch fich1"
         def exec1 = "chmod +x $path/cmd1.sh".execute()
         exec1.waitFor()
         "$path/cmd1.sh".execute()
@@ -101,9 +104,12 @@ class Element {
     static void deployRunServer(Map serverPath ){
         def path = serverPath.get("home_path")
         //def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path  | gradle --parallel runServer"
-        File cmd = new File(path+'/cmd2.sh')
-        cmd.write( "gradle clean build \n")
+        File cmd = new File(path+'cmd2.sh')
+        cmd.write( "cd $path \n")
+        cmd << "gradle clean build \n"
+        cmd << "touch fich2\n"
         cmd << "gradle runServeur \n"
+
         def exec = "chmod +x $path/cmd2.sh".execute()
         exec.waitFor()
         "$path/cmd2.sh".execute()
