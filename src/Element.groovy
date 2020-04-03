@@ -105,7 +105,7 @@ class Element {
         def path = serverPath.get("home_path")
         //def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path  | gradle --parallel runServer"
         println "runServer"
-        File cmd = new File(path+'/cmd2.sh')
+      /*File cmd = new File(path+'/cmd2.sh')
         cmd.write( "cd $path \n")
         cmd << "gradle clean build \n"
         cmd << "touch fich2.txt \n"
@@ -113,7 +113,8 @@ class Element {
 
         def exec = "chmod +x $path/cmd2.sh".execute()
         exec.waitFor()
-        "$path/cmd2.sh".execute()
+        "$path/cmd2.sh".execute()*/
+        "sh -c cd $path ; gradle clean build ; touch fich3.txt ; gradle runServeur".execute()
 
     }
 

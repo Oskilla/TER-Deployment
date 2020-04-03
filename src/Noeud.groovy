@@ -68,11 +68,8 @@ class Noeud {
     static void deployNoeud(String element,String Vm,String provider){
 
         def jsonSlurper = new JsonSlurper()
-        def data = jsonSlurper.parse(new File("/home/paci/Documents/TER-Deployment/needs3.json"))
+        def data = jsonSlurper.parse(new File(Vm))
         println data["Client"]["VM"]
-        println element
-        println Vm
-        println provider
         def VmMap = data["Client"]["VM"]
         switch(element){
             case "TestSuite":

@@ -71,9 +71,16 @@ class Main{
             }
         }
     */
-
-      deploy Node the "TestSuite" with "local" on "needs3.json"
-     //   deploy Elem the "java" with "Amazon" on "VM1"
-
+        if(args.size() != 10){
+            prinln("Error worng argument size")
+        }else {
+            if(args[3]=="Node"){
+                deploy Node the args[5] with args[7] on args[9]
+            }else if (args[3]=="Elem"){
+                //deploy Elem the args[5] with args[7] on args[9]
+            }else {
+                println("Type not recognized")
+            }
+        }
     }
 }
