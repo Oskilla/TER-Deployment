@@ -22,9 +22,6 @@ class Element {
             // If we got this far then all the common indices are identical, so whichever version is longer must be more recent
             verA.size() <=> verB.size()
         }
-
-      //  println "sorted versions: $sorted"
-        //println(sorted[1])
         return sorted[1] //returns the newest version
     }
     static elements = ["test","java","etc"];
@@ -45,21 +42,6 @@ class Element {
                     break;
             }
         }
-    //static void deployElement(Map element,Map fournisseur){
-       /* def provider = element.get("provider");
-        element.remove("provider")
-        element.remove("deploymentType")
-        element.remove("os")
-        println(element)
-        def test = element.keySet()
-        for(def tests : test){
-            if(!fournisseur.get(tests)){
-                call(tests,provider)
-            }
-            else if (element.get("tests") != "null" && !mostRecentVersion([element.get("tests"),fournisseur.get(tests)]) == element.get("tests") ){
-                call(tests,provider)
-            }
-        }*/
 
     }
 
@@ -85,9 +67,6 @@ class Element {
 
     static void deployScriptLocal(Map scriptPath ) {
         def path = scriptPath.home_path
-
-       // def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path | gradle clean build | gradle --parallel runScript"
-     //   def cmd1 = "rhythmbox"
         File cmd = new File(path+'cmd1.sh')
         cmd.write( "cd $path \n")
         cmd <<  "gradle clean build \n"
@@ -103,9 +82,8 @@ class Element {
 
     static void deployRunServer(Map serverPath ){
         def path = serverPath.get("home_path")
-        //def cmd1 = "sh source /etc/profile.d/gradle.sh | sh -c cd $path  | gradle --parallel runServer"
         println "runServer"
-      /*File cmd = new File(path+'/cmd2.sh')
+        File cmd = new File(path+'/cmd2.sh')
         cmd.write( "cd $path \n")
         cmd << "gradle clean build \n"
         cmd << "touch fich2.txt \n"
@@ -113,16 +91,15 @@ class Element {
 
         def exec = "chmod +x $path/cmd2.sh".execute()
         exec.waitFor()
-        "$path/cmd2.sh".execute()*/
-        "sh -c cd $path ; gradle clean build ; touch fich3.txt ; gradle runServeur".execute()
+        "$path/cmd2.sh".execute()
 
     }
 
     static void installGradleLocal(){
-        println "c'est pas la bonne version lel"
+        println "c'est pas la bonne version de gradle"
     }
     static void installJavaLocal(){
-       println "ptdr frere c'est quoi cette version xD"
+        println "c'est pas la bonne version de java"
     }
     static void installScript(Map element,Map Vm){
         if(!this.mostRecentVersion(["1.8",Vm.Java.version]) == Vm.Java.version){

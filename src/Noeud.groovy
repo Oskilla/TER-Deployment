@@ -2,7 +2,6 @@ import groovy.json.JsonSlurper
 
 class Noeud {
     static void deployNoeud(Map element, Map Vm,String provider){
-        //def provider = element.get("provider")
         def keys = element.keySet()
         for(def k : keys) {
             println(k)
@@ -23,7 +22,6 @@ class Noeud {
                         case "Google":
                             for(def j=0; j < i; j++) {
                                 deployAllGoogle(element,Vm);
-                                // deployAllGoogle();
                             }
                             break;
                         default:
