@@ -24,8 +24,7 @@ class Element {
         }
         return sorted[1] //returns the newest version
     }
-    static elements = ["test","java","etc"];
-    // TODO
+
     static void deployElement(Map element, Map VM, String fournisseur){
         def keys = element.keySet()
         for (def k : keys){
@@ -38,31 +37,10 @@ class Element {
                     this.installServer(element, VM);
                     break;
                 default:
-
                     break;
             }
         }
 
-    }
-
-    private static call(String element, String fournisseur){
-        def  elementTodeploy = element+fournisseur;
-        if(elements.contains("test")) {
-            switch (elementTodeploy) {
-                case "testgoogle":
-                    deployMe();
-                    break;
-                case "javagoogle":
-                    deployMe();
-                    break;
-                case "etc":
-                    deployMe();
-                    break;
-                default:
-                    println("erreur")
-                    break;
-            }
-        }
     }
 
     static void deployScriptLocal(Map scriptPath ) {
@@ -76,6 +54,7 @@ class Element {
         def exec1 = "chmod +x $path/cmd1.sh".execute()
         exec1.waitFor()
         "$path/cmd1.sh".execute()
+        println "RunScript should start"
 
     }
 
@@ -92,6 +71,7 @@ class Element {
         def exec = "chmod +x $path/cmd2.sh".execute()
         exec.waitFor()
         "$path/cmd2.sh".execute()
+        println "RunServer should start"
 
     }
 

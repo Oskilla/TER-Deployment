@@ -12,52 +12,18 @@ class Noeud {
                 i = element.get(k)
             }
             switch(k){
-                case "HelloWorld":
-                    switch (provider){
-                        case "Amazon":
-                            for(def j=0; j < i; j++) {
-                                deployHelloWorldAmazon(element,Vm)
-                            }
-                            break;
-                        case "Google":
-                            for(def j=0; j < i; j++) {
-                                deployAllGoogle(element,Vm);
-                            }
-                            break;
-                        default:
-                            println("si t'arrive là c'est qu'il y a eu un problème");
-                            break;
-                    }
-                    break;
                 case "TestSuite":
                     switch(provider){
                         case "local":
                             deployTestSuiteLocal(element,Vm)
                             break;
                         default:
-                            println("si t'arrive là c'est qu'il y a eu un problème1");
-                            break;
-                    }
-                    break;
-                case "HelloWorld2":
-                    switch (provider){
-                        case "Amazon":
-                            for(def j=0; j < i; j++) {
-                                deployHelloWorld2Amazon();
-                            }
-                            break;
-                        case "Google":
-                            for(def j=0; j < i; j++) {
-                                deployAllGoogle();
-                                //  deployHelloWorld2Google();
-                            }
-                            break;
-                        default:
-                            println("si t'arrive là c'est qu'il y a eu un problème2"+k);
+                            println("provider inconnu");
                             break;
                     }
                     break;
                 default:
+                    println("Noeud non connus")
                     break;
             }
 
@@ -74,10 +40,9 @@ class Noeud {
                 switch(provider){
                     case "local":
                         deployTestSuiteLocal(VmMap)
-                        println "yep"
                         break;
                     default:
-                        println("si t'arrive là c'est qu'il y a eu un problème1");
+                        println("provider inconnu");
                         break;
                 }
                 break;
