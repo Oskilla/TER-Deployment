@@ -45,7 +45,7 @@ class Element {
 
     static void deployScriptLocal(Map scriptPath ) {
         def path = scriptPath.home_path
-        File cmd = new File(path+'cmd1.sh')
+        File cmd = new File(path+'/cmd1.sh')
         cmd.write( "cd $path \n")
         cmd <<  "gradle clean build \n"
         cmd << "touch fich1\n"
