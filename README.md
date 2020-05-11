@@ -15,6 +15,7 @@ for linux
 
 
 How to run :
+in a terminal enter the following line : 
 
 groovyc Main.groovy src/Element.groovy src/Noeud.groovy
 
